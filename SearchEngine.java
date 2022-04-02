@@ -1,4 +1,4 @@
-package search_engine;
+package Engine;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -41,3 +41,21 @@ public class SearchEngine {
             allFileWords.add(oneFileWords);
         }
     }
+
+    // Function to search the keyword
+    public ArrayList<String> searchKeyword(String keyword) throws FileNotFoundException {
+
+        // creating arraylist to save the names the files in which the word has been found
+        ArrayList<String> keywordFoundFiles = new ArrayList<>();
+
+        // checking through every hash map if the word is present or not
+        for (int i = 0; i < allFileWords.size(); i++) {
+            // if that hash map contains that keyword then it add that filename to arraylist
+            if (allFileWords.get(i).containsKey(keyword)) {
+                keywordFoundFiles.add(filesList[i].getName());
+            }
+        }
+        // return arraylist of files in which the word was found
+        return keywordFoundFiles;
+    }
+}
