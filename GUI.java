@@ -1,4 +1,4 @@
- package lab8;
+  package lab8;
 
 
 import javax.swing.*;
@@ -26,7 +26,11 @@ public class GUI extends JFrame implements ActionListener  {
 	String file3 = "C:\\Users\\boluc\\eclipse-workspace\\lab9\\src\\lab8\\Files\\file3.txt";
 	String file4 = "C:\\Users\\boluc\\eclipse-workspace\\lab9\\src\\lab8\\Files\\file4.txt";
 	
+	String dictionaryWords = "C:\\Users\\boluc\\eclipse-workspace\\lab9\\src\\lab8\\Files\\dictionaryWords.txt";
+	
 	wordCount count = new wordCount();
+	SpellChecker check = new SpellChecker();
+	Files thefile = new Files();
 	
 	public JFrame Frame;
 	public Files f1 = new Files();
@@ -177,34 +181,27 @@ public class GUI extends JFrame implements ActionListener  {
 				}
 				
 			}
-			if(e.getSource()==bkg) {
-				JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
 
-				int returnValue = jfc.showOpenDialog(null);
-				// int returnValue = jfc.showSaveDialog(null);
-
-				if (returnValue == JFileChooser.APPROVE_OPTION) {
-					File selectedFile = jfc.getSelectedFile();
-					String direct = selectedFile.getAbsolutePath();
-					System.out.print(direct);  
-					
-					if (direct.contains("png")) {
-						
-						
-						
-					}
-					else {
-						System.out.print("Please check if the image selected is png"); 
-					}
-					
-				}
-				
-			}
 			jt.setText("");
 			countwordlist.clear();
 			if(e.getSource()==b1)
 			{
+				//Tried reloading the files again a
+				thefile.FileCheck();
 				StringGuess = t1.getText().toLowerCase();
+				try {
+					String result = check.stringCompare(StringGuess, dictionaryWords);
+					if(result == "False") {
+						JOptionPane.showMessageDialog(null, "The word you entered is not valid");;
+						
+					}
+					else {
+						jt.append("\n"+"The word is valid");
+					}
+				} catch (IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
 			
 		
 			
@@ -232,7 +229,7 @@ public class GUI extends JFrame implements ActionListener  {
 						double intTotalCount = Integer.parseInt(totalCount);
 						double percentage = (counter*100)/intTotalCount;
 						DecimalFormat df = new DecimalFormat("###.##");
-						System.out.println(df.format(percentage));
+						//System.out.println(df.format(percentage));
 						jt.append("\n"+df.format(percentage)+"% percentage match");
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
@@ -274,7 +271,7 @@ public class GUI extends JFrame implements ActionListener  {
 					double intTotalCount = Integer.parseInt(totalCount);
 					double percentage = (counter*100)/intTotalCount;
 					DecimalFormat df = new DecimalFormat("###.##");
-					System.out.println(df.format(percentage));
+					//System.out.println(df.format(percentage));
 					jt.append("\n"+df.format(percentage)+"% percentage match");
 					
 					
@@ -314,7 +311,7 @@ public class GUI extends JFrame implements ActionListener  {
 							double intTotalCount = Integer.parseInt(totalCount);
 							double percentage = (counter*100)/intTotalCount;
 							DecimalFormat df = new DecimalFormat("###.##");
-							System.out.println(df.format(percentage));
+							//System.out.println(df.format(percentage));
 							jt.append("\n"+df.format(percentage)+"% percentage match");
 						} catch (IOException e1) {
 							// TODO Auto-generated catch block
@@ -354,7 +351,7 @@ public class GUI extends JFrame implements ActionListener  {
 							double intTotalCount = Integer.parseInt(totalCount);
 							double percentage = (counter*100)/intTotalCount;
 							DecimalFormat df = new DecimalFormat("###.##");
-							System.out.println(df.format(percentage));
+							//System.out.println(df.format(percentage));
 							jt.append("\n"+df.format(percentage)+"% percentage match");
 						} catch (IOException e1) {
 							// TODO Auto-generated catch block
@@ -392,4 +389,4 @@ public class GUI extends JFrame implements ActionListener  {
 		}
 	
 	
-}
+	}
