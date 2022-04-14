@@ -1,0 +1,48 @@
+package lab8;
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
+//Java program to Compare two strings
+//lexicographically
+public class SpellChecker {
+
+	// This method compares two strings
+	// lexicographically without using
+	// library functions
+	public String stringCompare(String SearchWord, String FileName) throws IOException {
+		
+		File filename = new File(FileName);
+		Scanner input = new Scanner(filename);
+		
+	    int count = 0;
+	    boolean condition = true;
+	    while (input.hasNext() && condition == true) {
+	      String word  = input.next();
+	      
+	      String str1 = new String(SearchWord);
+	      String str2 = new String(word);
+	      boolean retval1 = str2.equals(str1);
+	      boolean retval2 = str2.equals(str2);
+
+	      System.out.println("str2 is equal to str1 = " + retval1);
+	      if (retval1 == retval2){
+	    	  condition = false;
+	    	  break;
+	    	  
+	      }
+		  System.out.println(word);
+		  count = count + 1;
+		}
+	    System.out.println("Word count: " + count);
+	    if (condition == false) {
+	    	String True = "True";
+	    	return True;
+	    }
+	    else {
+	    	String False = "False";
+	    	return False;
+	    	
+	    }
+	    }
+}
