@@ -5,8 +5,14 @@ Search Engine done with the Java Language
 Core Functionality:
 
   Select the Files to Check
+  
+  
   Calculate a match level for each and give a ranking
+  
+  
   Search multiple words.
+  
+  
   Spelling Checking
   
 Additional Functionality:
