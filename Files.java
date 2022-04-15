@@ -5,6 +5,7 @@ package lab8;
 //Packages that are going to be used	
 import java.util.*;
 import java.io.*;
+import java.nio.file.Path;
 
 //Class File to get the files that are going to be used in this project..
 //We check if the files can be opened or return a false
@@ -42,6 +43,8 @@ public class Files {
 			Scanner4.useDelimiter(",");
 
 		}
+		
+		//Catch error to show the files that are linked to the checkbox is not valid.
 		catch(FileNotFoundException event)
 		{
 			System.out.println("File can't be found in the directory presented. Please provide a valid entry");
@@ -55,5 +58,6 @@ public class Files {
 	
 		
 		}
+
 
 }
