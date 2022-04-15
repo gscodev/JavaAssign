@@ -522,6 +522,9 @@ public class GUI extends JFrame implements ActionListener{
              for(int i=0;i<file.size();i++){
             	 jt.append("\n"+file.get(i));
              }
+	     file.clear();
+             list.clear();
+             rank.clear();
              
              //After all of that is done it is set to true to show on the frame
              jt.setVisible(true);
