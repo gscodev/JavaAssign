@@ -15,16 +15,19 @@ public class SpellChecker {
 		File filename = new File(FileName);
 		Scanner input = new Scanner(filename);
 		
+		//the boolean condition is set to true in the start until the word is found.
 	    int count = 0;
 	    boolean condition = true;
 	    while (input.hasNext() && condition == true) {
 	      String word  = input.next();
 	      
+	      //It compares the searchword and and word and gives true or false
 	      String str1 = new String(SearchWord);
 	      String str2 = new String(word);
 	      boolean retval1 = str2.equals(str1);
 	      boolean retval2 = str2.equals(str2);
 
+	      //Says true or false for each of the words if it matches or not.
 	      System.out.println("str2 is equal to str1 = " + retval1);
 	      if (retval1 == retval2){
 	    	  condition = false;
@@ -34,6 +37,7 @@ public class SpellChecker {
 		  System.out.println(word);
 		  count = count + 1;
 		}
+	    //Shows how many words that it searched through
 	    System.out.println("Word count: " + count);
 	    if (condition == false) {
 	    	String True = "True";
@@ -46,4 +50,3 @@ public class SpellChecker {
 	    }
 	    }
 }
-
